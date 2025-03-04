@@ -25,6 +25,7 @@ main :: proc() {
 
         for {
                 fmt.print("\x1b[2J\x1b[H") // clear terminal
+                fmt.print("\x1B[?25l") // hide cursor
                 update(&theta_x, &theta_y)
         }
 }
@@ -57,7 +58,6 @@ update :: proc(theta_x: ^f32, theta_y: ^f32) {
                         brightness_adjusted := uint((brightness + 1) * 5) if brightness != max(f32) else max(uint) // continuous [-1, 1] -> discrete [0, 10]
                         if (brightness_adjusted >= 0 && brightness_adjusted <= 10) {
                                 ascii := ASCII_CHARS[brightness_adjusted]
-                                fmt.print("\x1B[?25l") // hide cursor
                                 fmt.printf("\x1B[%d;%dH", HEIGHT - y, x) // move cursor
                                 fmt.printf("%c", ascii)
                         }
