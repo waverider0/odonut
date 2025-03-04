@@ -3,9 +3,7 @@ package main
 import "core:fmt"
 import "core:math"
 import "core:math/linalg"
-import "core:os"
 import "core:time"
-import "core:unicode/utf8"
 
 PI :: 3.14159265359
 
